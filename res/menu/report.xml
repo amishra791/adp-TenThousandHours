@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" > 
+ 
+ 	<item 
+ 		android:id="@+id/mi_reportMenu" 
+ 		android:icon="@drawable/ic_action_report" 
+ 		android:title="@string/report" 
+ 		android:orderInCategory="2" 
+ 		android:showAsAction="ifRoom" >
+ 		
+ 	    <menu >
+ 	        <item
+ 	            android:id="@+id/reportMenuDaily"
+ 	            android:title="@string/reports_daily"/>
+ 	        <item
+ 	            android:id="@+id/reportMenuWeekly"
+ 	            android:title="@string/reports_weekly"/>
+ 	        <item
+ 	            android:id="@+id/reportMenuMonthly"
+ 	            android:title="@string/reports_monthly"/>
+ 	    </menu>
+ 	</item> 
+</menu>

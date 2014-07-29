@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/reportItemView"
+    android:layout_width="match_parent"
+    android:orientation="horizontal" 
+    android:layout_height="64dp"
+    android:layout_margin="0dp"
+    android:layout_marginBottom="2dp"
+    android:padding="0dp">
+    
+        
+   <TextView 
+   		android:id="@+id/activityName"
+        android:layout_width="0dip"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+       	android:text="Date"
+       	android:textSize="25dp"
+       	android:layout_marginRight="5dp"
+       	android:background="#282828"/>
+   <TextView 
+   		android:id="@+id/activityTotalTime"
+        android:layout_width="0dip"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+       	android:text="Time"
+       	android:textSize="25dp"
+       	android:layout_marginRight="5dp"
+       	android:background="#282828"/>
+   <TextView 
+   		android:id="@+id/activityPercentage"
+        android:layout_width="0dip"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+       	android:text="Duration"
+       	android:textSize="25dp"
+       	android:background="#282828"/>
+   
+   
+            
+    
+</LinearLayout>

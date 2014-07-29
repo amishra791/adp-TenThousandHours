@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TenThousandHours</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_activities">Reading</string>
+    <string name="title_activity_activity_page">ActivityPage</string>
+    <string name="title_activity_create_new">Create New Activity</string>
+    <string name="title_activity_new">New Activity</string>
+    <string name="timerVal">00:00:00</string>
+    <string name="pauseButtonLabel">Pause</string>
+    <string name="startButtonLabel">Start</string>
+    <string name="title_activity_details">DetailsActivity</string>
+    <string name="title_activity_activities_list">ActivitiesList</string>
+    <string name="add">Add</string>
+    <string name="report">Report</string>
+    <string name="title_activity_activity_details_list">Activity Details List</string>
+    <string name="title_activity_new_activity_detail">NewActivityDetail</string>
+    <string name="title_activity_reports_list">Reports</string>
+    
+    <string name="reports_daily">Daily</string>
+   	<string name="reports_weekly">Weekly</string>
+    <string name="reports_monthly">Monthly</string>
+
+</resources>
