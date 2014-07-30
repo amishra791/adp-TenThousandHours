@@ -2,11 +2,14 @@ package edu.foothill.tenthousandhours;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -44,10 +47,13 @@ public class NewActivityDetail extends Activity {
 			@Override
 			public void onClick(View view) {
 				timeSwapBuff += timeInMilliseconds;
-				customHandler.removeCallbacks(updateTimerThread);;
+				customHandler.removeCallbacks(updateTimerThread);
 				
 			}
 		});
+		
+		//add up action
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		
 	}
 	
@@ -72,11 +78,29 @@ public class NewActivityDetail extends Activity {
 		}
 	};
 	
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 	    MenuInflater mi = getMenuInflater();
-	    mi.inflate(R.menu.main, menu);
+	    mi.inflate(R.menu.activity_details, menu);
 	    return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()){
+		case android.R.id.home:
+			Intent intent = new Intent(this,ActivitiesList.class);
+			NavUtils.navigateUpTo(this, intent);
+			return true;
+		/*	
+		case R.id.mi_add:
+			Intent intent2 = new Intent(this,ActivitiesList.class);
+			NavUtils.navigateUpTo(this, intent2);
+			return true;
+		*/
+	}
+		return super.onOptionsItemSelected(item);
 	}
 	
 }

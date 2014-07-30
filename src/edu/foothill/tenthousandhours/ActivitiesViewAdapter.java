@@ -1,6 +1,7 @@
 package edu.foothill.tenthousandhours;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.content.Context;
 import android.view.View;
@@ -24,10 +25,14 @@ public class ActivitiesViewAdapter extends BaseAdapter {
 	protected static ArrayList<Activity> activities;
 	private static boolean isInitialized;
 	protected Context context;
+	private static ActivityUtil activityUtil = new ActivityUtil();
 	
 	public ActivitiesViewAdapter(Context c) {
 		context = c;
+
+		List<String> activitiesInDir = activityUtil.getListOfActivitesDir();
 		
+		/*
 		if(!isInitialized) {
 			activities = new ArrayList<Activity>();
 			
@@ -35,6 +40,13 @@ public class ActivitiesViewAdapter extends BaseAdapter {
 			activities.add(new Activity(2,"Clarinet"));
 			activities.add(new Activity(3,"Football"));
 			activities.add(new Activity(4,"Volunteering"));
+			
+			//activities = Util.GetAdityaData();
+		}
+		*/
+		int idCount = 1;
+		for(String s: activitiesInDir){
+			activities.add(new Activity(idCount,s));
 		}
 	}
 

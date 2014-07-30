@@ -29,18 +29,30 @@
         <activity
             android:name=".NewActivity"
             android:label="@string/title_activity_new" >
+            <meta-data 
+                android:name="android.support.PAREENT_ACTIVITY"
+                android:value="edu.foothill.tenthousandhours.ActivitiesList"/>
         </activity>
         <activity
             android:name=".ActivityDetailsList"
             android:label="@string/title_activity_activity_details_list" >
+            <meta-data 
+                android:name="android.support.PAREENT_ACTIVITY"
+                android:value="edu.foothill.tenthousandhours.ActivitiesList"/>
         </activity>
         <activity
             android:name=".NewActivityDetail"
             android:label="@string/title_activity_new_activity_detail" >
+            <meta-data 
+                android:name="android.support.PAREENT_ACTIVITY"
+                android:value="edu.foothill.tenthousandhours.ActivityDetailsList"/>
         </activity>
         <activity
             android:name=".ReportsList"
             android:label="@string/title_activity_reports_list" >
+            <meta-data 
+                android:name="android.support.PAREENT_ACTIVITY"
+                android:value="edu.foothill.tenthousandhours.ActivitiesList"/>
         </activity>
     </application>
 

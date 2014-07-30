@@ -37,7 +37,7 @@ public class ActivitiesList extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu){
 		MenuInflater mi = getMenuInflater();
-		mi.inflate(R.menu.main, menu);
+		mi.inflate(R.menu.activity, menu);
 		return true;
 	}
 	
@@ -48,13 +48,11 @@ public class ActivitiesList extends Activity {
 			Intent intent1 = new Intent(this,NewActivity.class);
 			startActivity(intent1);
 			return true;
-		
-		/*
+			
 		case R.id.mi_report:
-			Intent intent2 = new Intent(this,ListActivity.class);
+			Intent intent2 = new Intent(this,ReportsList.class);
 			startActivity(intent2);
-			return true;
-		*/	
+			return true;	
 		default:
 			return super.onOptionsItemSelected(item);
 		}

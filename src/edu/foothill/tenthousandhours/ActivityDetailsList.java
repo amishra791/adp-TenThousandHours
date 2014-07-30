@@ -3,6 +3,7 @@ package edu.foothill.tenthousandhours;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,12 +19,14 @@ public class ActivityDetailsList extends Activity {
 		ListView listView = (ListView) findViewById(R.id.activityDetialsListView);
 		listView.setAdapter(new ActivityDetailsListAdapter(this));
 		
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		
 	}
 	
 	@Override 
 	public boolean onCreateOptionsMenu(Menu menu){
 		MenuInflater mi = getMenuInflater();
-		mi.inflate(R.menu.main, menu);
+		mi.inflate(R.menu.activity_details, menu);
 		return true;
 	}
 	
@@ -35,9 +38,9 @@ public class ActivityDetailsList extends Activity {
 			startActivity(intent1);
 			return true;
 		
-		case R.id.mi_report:
-			Intent intent2 = new Intent(this,ReportsList.class);
-			startActivity(intent2);
+		case android.R.id.home:
+			Intent intent3 = new Intent(this,ActivitiesList.class);
+			NavUtils.navigateUpTo(this, intent3);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
