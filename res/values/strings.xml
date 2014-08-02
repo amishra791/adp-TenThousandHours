@@ -15,11 +15,15 @@
     <string name="add">Add</string>
     <string name="report">Report</string>
     <string name="title_activity_activity_details_list">Activity Details List</string>
-    <string name="title_activity_new_activity_detail">NewActivityDetail</string>
+    <string name="title_activity_new_activity_detail">New Activity Detail</string>
     <string name="title_activity_reports_list">Reports</string>
     
+    <!-- String values for reports activity -->
     <string name="reports_daily">Daily</string>
    	<string name="reports_weekly">Weekly</string>
     <string name="reports_monthly">Monthly</string>
+    
+    <!-- String values for New Activity -->
+    <string name="activity_name">Name of Activity</string>
 
 </resources>

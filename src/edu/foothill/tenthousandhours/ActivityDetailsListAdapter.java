@@ -1,5 +1,7 @@
 package edu.foothill.tenthousandhours;
 
+import java.io.IOException;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,8 +10,8 @@ import android.widget.TextView;
 
 public class ActivityDetailsListAdapter extends ActivityDetailsViewAdapter {
 
-	public ActivityDetailsListAdapter(Context c) {
-		super(c);
+	public ActivityDetailsListAdapter(Context c, String activityName) throws IOException {
+		super(c,activityName);
 	}
 	
 	

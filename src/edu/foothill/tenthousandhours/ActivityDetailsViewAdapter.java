@@ -1,7 +1,8 @@
 package edu.foothill.tenthousandhours;
 
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.StringTokenizer;
 
 import android.content.Context;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.BaseAdapter;
 
 public class ActivityDetailsViewAdapter extends BaseAdapter{
 	
+	/*
 	class ActivityDetail{
 		
 		public static final long SECONDS = 1000;
@@ -45,23 +47,25 @@ public class ActivityDetailsViewAdapter extends BaseAdapter{
 			return numHours + ":" + numMinutes + ":" + numSeconds;
 		}
 	}
-	
+	*/
 	protected static ArrayList<ActivityDetail> activityDetails;
-	private static boolean isInitialized;
+	//private static boolean isInitialized;
 	protected Context context;
+	private static ActivityUtil activityUtil = new ActivityUtil();
 	
-	
-	public ActivityDetailsViewAdapter(Context c) {
+	public ActivityDetailsViewAdapter(Context c, String activityName) throws IOException {
 		context = c;
+		ArrayList<String> stringActivityDetails = activityUtil.readActivityDetailsFile(activityName);
 		
-		if(!isInitialized){
-			activityDetails = new ArrayList<ActivityDetail>();
-			
-			activityDetails.add(new ActivityDetail(1,System.currentTimeMillis(),System.currentTimeMillis()+1000));
-			activityDetails.add(new ActivityDetail(2,System.currentTimeMillis(),System.currentTimeMillis()+1000));
-			activityDetails.add(new ActivityDetail(3,System.currentTimeMillis(),System.currentTimeMillis()+1000));
-			
+		
+		activityDetails = new ArrayList<ActivityDetail>();
+		StringTokenizer st;
+		int idCount = 0;
+		for(String s: stringActivityDetails){
+			st = new StringTokenizer(s);
+			activityDetails.add(new ActivityDetail(idCount++,Long.parseLong(st.nextToken()),Long.parseLong(st.nextToken())));
 		}
+		
 	}
 
 	@Override
@@ -75,38 +79,29 @@ public class ActivityDetailsViewAdapter extends BaseAdapter{
 		// TODO Auto-generated method stub
 		return activityDetails.get(position);
 	}
-
+	
 	@Override
 	public long getItemId(int position) {
 		// TODO Auto-generated method stub
-		return activityDetails.get(position).id;
+		return activityDetails.get(position).getId();
 	}
 
+	
 	//other methods to access inner class
-	@SuppressWarnings("deprecation")
+	
 	public String getStartDate(int position){
-		String s = "";
-		Date date = activityDetails.get(position).getStartDate();
-		int year = date.getYear();
-		int month = date.getMonth();
-		int day = date.getDay();
-		s += year + "/" + month + "/" + day;
-		return s;
+		return activityDetails.get(position).getStartDate();
 		
 	}
-	@SuppressWarnings("deprecation")
+
 	public String getStartTime(int position){
-		String s = "";
-		Date date = activityDetails.get(position).getStartDate();
-		int hour = date.getHours();
-		int minute = date.getMinutes();
-		s += hour + ":" + minute;
-		return s;
+		return activityDetails.get(position).getStartTimeFormat();
 	}
 	
 	public String getDuration(int position){
-		return activityDetails.get(position).computeDuration();
+		return activityDetails.get(position).getDuration();
 	}
+	
 	@Override
 	public View getView(int arg0, View arg1, ViewGroup arg2) {
 		// TODO Auto-generated method stub

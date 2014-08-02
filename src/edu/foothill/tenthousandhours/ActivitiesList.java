@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-public class ActivitiesList extends Activity {
+public class ActivitiesList extends ProjectActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +25,14 @@ public class ActivitiesList extends Activity {
 		listView.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() { 
 	    	 @Override
 	    	 public void onItemClick(AdapterView<?> parent, View v, int position, long id) { 
-	    	 // Tell ActivityDetailsListActivity which activity has been tapped 
-	    	 Intent intent = new Intent(getBaseContext(), ActivityDetailsList.class); 
-	    	 intent.putExtra("position", position); 
-	    	 startActivity(intent); 
-	    	 } 
+		    	 // Tell ActivityDetailsListActivity which activity has been tapped 
+		    	 Intent intent = new Intent(getBaseContext(), ActivityDetailsList.class); 
+		    	 util.reload();
+		    	 String name = util.getActivityNamefromPosition(position);
+		    	 intent.putExtra("activityName",name);
+		    	 
+		    	 startActivity(intent); 
+		    	 }
 	    	 });
 		
 	}

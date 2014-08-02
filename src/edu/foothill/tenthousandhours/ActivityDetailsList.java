@@ -1,5 +1,8 @@
 package edu.foothill.tenthousandhours;
 
+import java.io.IOException;
+
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,18 +12,35 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
 
-public class ActivityDetailsList extends Activity {
+public class ActivityDetailsList extends ProjectActivity {
 
+	String activityName;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_activity_details_list);
 		
+		
+		
+		activityName = "";
+		Intent in = getIntent();
+		Bundle b = in.getExtras();
+		if(b != null){
+			activityName = b.getString("activityName");
+		}
+		//activityName = Integer.valueOf(pos).toString();
+		ActionBar ab = getActionBar();
+		ab.setTitle("Activity Details: " + activityName);
+		
 		ListView listView = (ListView) findViewById(R.id.activityDetialsListView);
-		listView.setAdapter(new ActivityDetailsListAdapter(this));
+		try {
+			listView.setAdapter(new ActivityDetailsListAdapter(this,activityName));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-		
 	}
 	
 	@Override 
@@ -35,6 +55,7 @@ public class ActivityDetailsList extends Activity {
 		switch (item.getItemId()){
 		case R.id.mi_add:
 			Intent intent1 = new Intent(this,NewActivityDetail.class);
+			intent1.putExtra("activityName",activityName);
 			startActivity(intent1);
 			return true;
 		
