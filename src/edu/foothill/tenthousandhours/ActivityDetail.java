@@ -68,8 +68,7 @@ public class ActivityDetail {
 		return formatInterval(duration);
 	}
 
-	private static String formatInterval(final long duration)
-    {
+	private static String formatInterval(final long duration){
         final long hr = TimeUnit.MILLISECONDS.toHours(duration);
         final long min = TimeUnit.MILLISECONDS.toMinutes(duration - TimeUnit.HOURS.toMillis(hr));
         final long sec = TimeUnit.MILLISECONDS.toSeconds(duration - TimeUnit.HOURS.toMillis(hr) - TimeUnit.MINUTES.toMillis(min));

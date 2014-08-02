@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-public class ActivityDetailsViewAdapter extends BaseAdapter{
+public class ActivityDetailsViewAdapter extends ProjectBaseAdapter{
 	
 	/*
 	class ActivityDetail{
@@ -51,7 +51,7 @@ public class ActivityDetailsViewAdapter extends BaseAdapter{
 	protected static ArrayList<ActivityDetail> activityDetails;
 	//private static boolean isInitialized;
 	protected Context context;
-	private static ActivityUtil activityUtil = new ActivityUtil();
+	
 	
 	public ActivityDetailsViewAdapter(Context c, String activityName) throws IOException {
 		context = c;
@@ -87,7 +87,7 @@ public class ActivityDetailsViewAdapter extends BaseAdapter{
 	}
 
 	
-	//other methods to access inner class
+	//other methods to access ActivityDetail class
 	
 	public String getStartDate(int position){
 		return activityDetails.get(position).getStartDate();

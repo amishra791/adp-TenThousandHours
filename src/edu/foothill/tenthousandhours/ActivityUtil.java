@@ -8,8 +8,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-import java.util.Scanner;
+import java.util.StringTokenizer;
 
 import android.os.Environment;
 import android.util.Log;
@@ -20,6 +21,10 @@ public class ActivityUtil {
 	final String SDCARD_PATH = Environment.getExternalStorageDirectory().getPath();
 	final String APP_PATH = SDCARD_PATH + "/TenThousandHours";
 	private static ArrayList<Activity> activities;
+	
+	private final long DAY_MILLIS = 1000 * 60 * 60 * 24;
+	private final long WEEK_MILLIS = DAY_MILLIS * 7;
+	private final long MONTH_MILLIS = DAY_MILLIS * 30;
 	
 		
 	public ActivityUtil() {
@@ -144,6 +149,81 @@ public class ActivityUtil {
 		}
 		
 		return activities;
+	}
+	
+	public long computeTotalTimeForAllActivities(String mode) throws IOException{
+		File dir = new File(this.APP_PATH);
+		File[] files = dir.listFiles();
+		Date curDate = new Date();
+		long curDateMillis = curDate.getTime();
+		long minDateMillis =  -1;
+		if(mode.equals("daily")){
+			minDateMillis = curDateMillis - this.DAY_MILLIS;
+		}
+		else if (mode.equals("weekly")){
+			minDateMillis = curDateMillis - this.WEEK_MILLIS;
+		}
+		else if(mode.equals("monthly")){
+			minDateMillis = curDateMillis - this.MONTH_MILLIS;
+		}
+		long totalTime = -1;
+		StringTokenizer st;
+		if(files != null){
+			totalTime = 0;
+			for(File file:files){
+				String activityName = this.getActivityNamefromFilePath(file.getPath());
+				List<String> activityDetailLines = this.readActivityDetailsFile(activityName);
+				for(String line:activityDetailLines){
+					if ((line == null) || (line !="")){
+						break;
+					}
+					st = new StringTokenizer(line);
+					long begTime = Long.parseLong(st.nextToken());
+					if(begTime < minDateMillis){
+						continue;
+					}
+					long endTime = Long.parseLong(st.nextToken());
+					totalTime = totalTime + (endTime - begTime);
+				}
+			}
+		}
+			
+		return totalTime;
+	}
+	
+	public long computeTotalTimeForActivity(String activityName, String mode) throws IOException{
+		File activityDetailFile = new File(this.getFilePathForActivityDetail(activityName));
+		Date curDate = new Date();
+		long curDateMillis = curDate.getTime();
+		long minDateMillis = -1;
+		if(mode.equals("daily")){
+			minDateMillis = curDateMillis - this.DAY_MILLIS;
+		}
+		else if (mode.equals("weekly")){
+			minDateMillis = curDateMillis - this.WEEK_MILLIS;
+		}
+		else if(mode.equals("monthly")){
+			minDateMillis = curDateMillis - this.MONTH_MILLIS;
+		}
+		long totalTime = -1;
+		StringTokenizer st;
+		if (activityDetailFile != null){
+			totalTime = 0;
+			List<String> activityDetailLines = this.readActivityDetailsFile(activityName);
+			for(String line: activityDetailLines){
+				if((line == null) || (line !="")){
+					return totalTime;
+				}
+				st = new StringTokenizer(line);
+				long begTime = Long.parseLong(st.nextToken());
+				if(begTime < minDateMillis){
+					continue;
+				}
+				long endTime = Long.parseLong(st.nextToken());
+				totalTime = totalTime + (endTime - begTime);
+			}
+		}
+		return totalTime;
 	}
 	
 	

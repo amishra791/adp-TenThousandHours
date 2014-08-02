@@ -1,5 +1,7 @@
 package edu.foothill.tenthousandhours;
 
+import java.io.IOException;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,8 +10,8 @@ import android.widget.TextView;
 
 public class ReportsListAdapter extends ReportsViewAdapter{
 
-	public ReportsListAdapter(Context c) {
-		super(c);
+	public ReportsListAdapter(Context c, String mode) throws IOException {
+		super(c, mode);
 	}
 	
 	@Override
@@ -24,12 +26,20 @@ public class ReportsListAdapter extends ReportsViewAdapter{
 		}
 		
 		TextView startDateTextView = (TextView) rowView.findViewById(R.id.activityName);
-		startDateTextView.setText(getName(position));
+		startDateTextView.setText(getReportActivityName(position));
 		TextView startTimeTextView = (TextView) rowView.findViewById(R.id.activityTotalTime);
-		startTimeTextView.setText(getTime(position));
+		startTimeTextView.setText(getReportActivityTime(position));
 		TextView nameTextView = (TextView) rowView.findViewById(R.id.activityPercentage);
-		nameTextView.setText(getPercentage(position));
+		try {
+			nameTextView.setText(getReportActivityPercentage(position));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return rowView;
+		
+		
 	}
 
 }

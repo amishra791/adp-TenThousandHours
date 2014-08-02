@@ -1,14 +1,16 @@
 package edu.foothill.tenthousandhours;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 
-public class ReportsViewAdapter extends BaseAdapter{
+public class ReportsViewAdapter extends ProjectBaseAdapter{
 
+	/*
 	class Report{
 		public int id;
 		public String name;
@@ -27,21 +29,28 @@ public class ReportsViewAdapter extends BaseAdapter{
 		
 		
 	}
-	
+	*/
 	protected static ArrayList<Report> reports;
-	private static boolean isInitialized;
+	
 	protected Context context;
+	String mode = "";
 	
 	
-	public ReportsViewAdapter(Context c) {
+	public ReportsViewAdapter(Context c, String mode) throws IOException {
 		context = c;
-		
-		if(!isInitialized){
-			reports = new ArrayList<Report>();
-			
-			reports.add(new Report(1,"foo",1,0,0));
-			
+		reports = new ArrayList<Report>();
+		this.mode = mode;
+		List<String> activityFilePath = activityUtil.getListOfActivitesDir();
+		List<String> activityNames = new ArrayList<String>();
+		for(String filePath: activityFilePath){
+			activityNames.add(activityUtil.getActivityNamefromFilePath(filePath));
 		}
+		
+		int idCount = 0;
+		for(String activityName:activityNames){
+			reports.add(new Report(idCount++,activityName,activityUtil.computeTotalTimeForActivity(activityName, mode)));
+		}
+		
 	}
 
 
@@ -59,41 +68,26 @@ public class ReportsViewAdapter extends BaseAdapter{
 
 	@Override
 	public long getItemId(int position) {
-		return reports.get(position).id;
+		return reports.get(position).getId();
+	}
+	
+	public String getReportActivityName(int position){
+		return reports.get(position).getName();
+	}
+	
+	public String getReportActivityTime(int position){
+		return reports.get(position).getTotalTimeFormat();
+	}
+	
+	public String getReportActivityPercentage(int position) throws IOException{
+		String activityName = getReportActivityName(position);
+		long activityTime = activityUtil.computeTotalTimeForActivity(activityName, mode);
+		long totalTime = activityUtil.computeTotalTimeForAllActivities(mode);
+		
+		int percentage = (int) ((((double)activityTime)/totalTime) * 100);
+		return Integer.valueOf(percentage).toString();
 	}
  
-	//inner class methods
-	public long computeTotalTime(){
-		long totalTime = 0;
-		for (Report r : reports){
-			totalTime = totalTime + 3600 * r.numHours + 60 * r.numMins + r.numSeconds;
-		}
-		return totalTime;
-	}
-	
-	public long computeReportTimeInSeconds(int position){
-		long time = reports.get(position).numHours * 3600 +
-				reports.get(position).numMins * 60 +
-				reports.get(position).numSeconds;
-		return time;
-	}
-	public String getName(int position){
-		return reports.get(position).name;
-	}
-	
-	public String getTime(int position){
-		return reports.get(position).numHours + ":" 
-				+ reports.get(position).numMins + ":"
-				+ reports.get(position).numSeconds;
-	}
-	public String getPercentage(int position){
-		long totalTime = computeTotalTime();
-		long totalReportTime = computeReportTimeInSeconds(position);
-		
-		int percentage = ((int)(totalTime/totalReportTime)) * 100;
-		return new Integer(percentage).toString();
-	}
-	
 
 	@Override
 	public View getView(int arg0, View arg1, ViewGroup arg2) {

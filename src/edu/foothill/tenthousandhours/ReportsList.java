@@ -1,5 +1,7 @@
 package edu.foothill.tenthousandhours;
 
+import java.io.IOException;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,7 +18,19 @@ public class ReportsList extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_reports_list);
 		ListView listView = (ListView) findViewById(R.id.reportsListView);
-		listView.setAdapter(new ReportsListAdapter(this));
+		Intent in = getIntent();
+		Bundle b = in.getExtras();
+		String mode = "daily";
+		if(b!=null){
+			mode = (String) b.getString("mode");
+		}
+		
+		try {
+			listView.setAdapter(new ReportsListAdapter(this, mode));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		

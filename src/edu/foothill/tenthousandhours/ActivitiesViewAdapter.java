@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-public class ActivitiesViewAdapter extends BaseAdapter {
+public class ActivitiesViewAdapter extends ProjectBaseAdapter {
 	
 	/*
 	class Activity{
@@ -25,7 +25,6 @@ public class ActivitiesViewAdapter extends BaseAdapter {
 	protected static ArrayList<Activity> activities;
 	//private static boolean isInitialized;
 	protected Context context;
-	private static ActivityUtil activityUtil = new ActivityUtil();
 	
 	public ActivitiesViewAdapter(Context c) {
 		context = c;
