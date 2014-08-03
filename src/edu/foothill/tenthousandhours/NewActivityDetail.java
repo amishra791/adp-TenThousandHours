@@ -4,6 +4,7 @@ package edu.foothill.tenthousandhours;
 import java.io.IOException;
 import java.util.Date;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -44,6 +45,9 @@ public class NewActivityDetail extends ProjectActivity {
 		if(b!=null){
 			activityName = (String) b.getString("activityName");
 		}
+		
+		ActionBar ab = getActionBar();
+		ab.setTitle("Log In Time: " + activityName);
 		
 		timerValue = (TextView) findViewById(R.id.timerValue);
 		startButton = (ImageButton) findViewById(R.id.startButton);

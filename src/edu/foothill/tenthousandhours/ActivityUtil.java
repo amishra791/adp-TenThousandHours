@@ -95,7 +95,7 @@ public class ActivityUtil {
 	
 	public void writeActivityDetailsOntoFile(String activityName, long start, long end) throws IOException{
 		String filePath = getFilePathForActivityDetail(activityName);
-		ArrayList<String> activityDetails = readActivityDetailsFile(filePath);
+		ArrayList<String> activityDetails = readActivityDetailsFile(activityName);
 		activityDetails.add(start + " " + end);
 		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(filePath)));
 		
@@ -174,7 +174,7 @@ public class ActivityUtil {
 				String activityName = this.getActivityNamefromFilePath(file.getPath());
 				List<String> activityDetailLines = this.readActivityDetailsFile(activityName);
 				for(String line:activityDetailLines){
-					if ((line == null) || (line !="")){
+					if ((line == null) || (line =="")){
 						break;
 					}
 					st = new StringTokenizer(line);
@@ -207,11 +207,11 @@ public class ActivityUtil {
 		}
 		long totalTime = -1;
 		StringTokenizer st;
-		if (activityDetailFile != null){
+		if (activityDetailFile.exists()){
 			totalTime = 0;
 			List<String> activityDetailLines = this.readActivityDetailsFile(activityName);
 			for(String line: activityDetailLines){
-				if((line == null) || (line !="")){
+				if((line == null) || (line =="")){
 					return totalTime;
 				}
 				st = new StringTokenizer(line);

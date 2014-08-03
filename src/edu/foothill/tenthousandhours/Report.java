@@ -32,12 +32,14 @@ public class Report {
 	
 	@SuppressLint("SimpleDateFormat")
 	public String getTotalTimeFormat(){
-		SimpleDateFormat startTimeFormat = new SimpleDateFormat("HH:mm:ss");
-		Date startTimeD = new Date(totalTime);
-		return startTimeFormat.format(startTimeD);
+		if(totalTime == -1){
+			return "N/A";
+		}
+		String formattedStartTime = this.formatInterval(totalTime);
+		return formattedStartTime;
 	}
 	
-	private static String formatInterval(final long duration){
+	private String formatInterval(final long duration){
         final long hr = TimeUnit.MILLISECONDS.toHours(duration);
         final long min = TimeUnit.MILLISECONDS.toMinutes(duration - TimeUnit.HOURS.toMillis(hr));
         final long sec = TimeUnit.MILLISECONDS.toSeconds(duration - TimeUnit.HOURS.toMillis(hr) - TimeUnit.MINUTES.toMillis(min));

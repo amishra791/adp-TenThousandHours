@@ -10,31 +10,31 @@
         
    <TextView 
    		android:id="@+id/activityDetailDate"
+       	android:text="@string/activity_field_date"
+       	android:layout_marginRight="5dp"
         android:layout_width="0dip"
         android:layout_weight="1"
         android:layout_height="wrap_content"
         android:textColor="#ffffff"
-       	android:text="Date"
        	android:textSize="25dp"
-       	android:layout_marginRight="5dp"
        	android:background="#282828"/>
    <TextView 
    		android:id="@+id/activityDetailStartTime"
+       	android:text="@string/activity_field_time"
+       	android:layout_marginRight="5dp"
         android:layout_width="0dip"
         android:layout_weight="1"
         android:layout_height="wrap_content"
         android:textColor="#ffffff"
-       	android:text="Time"
        	android:textSize="25dp"
-       	android:layout_marginRight="5dp"
        	android:background="#282828"/>
    <TextView 
    		android:id="@+id/activityDetailDuration"
+       	android:text="@string/activity_field_duration"
         android:layout_width="0dip"
         android:layout_weight="1"
         android:layout_height="wrap_content"
         android:textColor="#ffffff"
-       	android:text="Duration"
        	android:textSize="25dp"
        	android:background="#282828"/>
    

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="text_size_small">
+      <item name="android:textSize">15sp</item>
+  </style>
+  
+  <style name="text_size_medium">
+      <item name="android:textSize">20sp</item>
+  </style>
+  
+  <style name="text_size_large">
+      <item name="android:textSize">25sp</item>
+  </style>
+  
+</resources>

@@ -10,26 +10,7 @@ import android.view.ViewGroup;
 
 public class ReportsViewAdapter extends ProjectBaseAdapter{
 
-	/*
-	class Report{
-		public int id;
-		public String name;
-		public int numHours;
-		public int numMins;
-		public int numSeconds;
-		
-		
-		Report(int id,String name, int numHours, int numMins, int numSeconds){
-			this.id = id;
-			this.name = name;
-			this.numHours = numHours;
-			this.numMins = numMins;
-			this.numSeconds = numSeconds;
-		}
-		
-		
-	}
-	*/
+
 	protected static ArrayList<Report> reports;
 	
 	protected Context context;
@@ -48,7 +29,8 @@ public class ReportsViewAdapter extends ProjectBaseAdapter{
 		
 		int idCount = 0;
 		for(String activityName:activityNames){
-			reports.add(new Report(idCount++,activityName,activityUtil.computeTotalTimeForActivity(activityName, mode)));
+			long totalTimeActivity = activityUtil.computeTotalTimeForActivity(activityName, mode);
+			reports.add(new Report(idCount++,activityName,totalTimeActivity));
 		}
 		
 	}
@@ -76,16 +58,23 @@ public class ReportsViewAdapter extends ProjectBaseAdapter{
 	}
 	
 	public String getReportActivityTime(int position){
-		return reports.get(position).getTotalTimeFormat();
+		Report r = reports.get(position);
+		String time = r.getTotalTimeFormat();
+		return time;
 	}
 	
 	public String getReportActivityPercentage(int position) throws IOException{
+		
+		if(this.getReportActivityTime(position).equals("N/A")){
+			return "N/A";
+		}
+		
 		String activityName = getReportActivityName(position);
 		long activityTime = activityUtil.computeTotalTimeForActivity(activityName, mode);
 		long totalTime = activityUtil.computeTotalTimeForAllActivities(mode);
 		
 		int percentage = (int) ((((double)activityTime)/totalTime) * 100);
-		return Integer.valueOf(percentage).toString();
+		return Integer.valueOf(percentage).toString() + "%";
 	}
  
 
