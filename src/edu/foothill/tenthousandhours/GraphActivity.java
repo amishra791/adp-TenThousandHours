@@ -1,5 +1,6 @@
 package edu.foothill.tenthousandhours;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import org.achartengine.ChartFactory;
@@ -8,14 +9,13 @@ import org.achartengine.model.CategorySeries;
 import org.achartengine.renderer.DefaultRenderer;
 import org.achartengine.renderer.SimpleSeriesRenderer;
 
-import android.app.Activity;
-import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.ActionBar.LayoutParams;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v4.app.NavUtils;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 
@@ -98,17 +98,20 @@ public class GraphActivity extends Activity {
 	}
 	
 	public int[] generateColorArray(int numColors){
+		ArrayList<Integer> list = new ArrayList<Integer>(numColors);
+		for(int i=0;i<numColors;i++){
+			list.add(0);
+		}
 		int[] colorArray = new int[numColors];
 		Random randomNumGenerator = new Random();
 		int fred = randomNumGenerator.nextInt(255);
 		int fgreen = randomNumGenerator.nextInt(255);
 		int fblue = randomNumGenerator.nextInt(255);
-		int first = Color.rgb(randomNumGenerator.nextInt(255), randomNumGenerator.nextInt(255), randomNumGenerator.nextInt(255));
-		Color f = new Color();
-		colorArray[0] = first;
+		int first = Color.rgb(fred, fgreen, fblue);
+		list.set(0, first);
+		//colorArray[0] = first;
 		int colorCount = 1;
 		while(colorCount<numColors){
-			double diff = 0;
 			int sred = 0;
 			int sgreen = 0;
 			int sblue = 0;
@@ -116,14 +119,31 @@ public class GraphActivity extends Activity {
 				sred = randomNumGenerator.nextInt(255);
 				sgreen = randomNumGenerator.nextInt(255);
 				sblue = randomNumGenerator.nextInt(255);
-				long d = Math.abs(sred-fred) * Math.abs(sred-fred) + 
-						Math.abs(sgreen-fgreen) * Math.abs(sgreen-fgreen) +
-						Math.abs(sblue-fblue) * Math.abs(sblue-fblue);
-				diff = Math.sqrt(d);
-			}while(diff > 360);
-			colorArray[colorCount] = Color.rgb(sred, sgreen, sblue);
+			}while(!isValidColor(sred,sgreen,sblue,list));
+			list.set(colorCount, Color.rgb(sred, sgreen, sblue));
 			colorCount++;
 		}
+		for(int i=0;i<list.size();i++){
+			colorArray[i] = list.get(i);
+		}
 		return colorArray;
+	}
+	
+	private boolean isValidColor(int fred, int fblue, int fgreen, ArrayList<Integer> list){
+		boolean isValid = true;
+		for(int color:list){
+			int sred = Color.red(color);
+			int sgreen = Color.green(color);
+			int sblue = Color.blue(color);
+			long d = Math.abs(sred-fred) * Math.abs(sred-fred) + 
+					Math.abs(sgreen-fgreen) * Math.abs(sgreen-fgreen) +
+					Math.abs(sblue-fblue) * Math.abs(sblue-fblue);
+			double diff = Math.sqrt(d);
+			if(diff < 100){
+				isValid = false;
+				return isValid;
+			}
+		}
+		return isValid;
 	}
 }

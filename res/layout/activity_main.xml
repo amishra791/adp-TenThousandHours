@@ -5,6 +5,7 @@
     android:background="#000000"
     tools:context="${relativePackage}.${activityClass}" >
 
+    <!--  
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
@@ -16,5 +17,15 @@
         android:textColor="#00ccff"
         android:textSize="28dp" />
 
+	-->
 
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="62dp"
+        android:src="@drawable/ic_transparent_org" />
+	
 </RelativeLayout>
