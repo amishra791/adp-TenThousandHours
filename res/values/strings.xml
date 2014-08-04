@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">TenThousandHours</string>
+    <string name="app_name">Ten Thousand Hours</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_activities">Reading</string>
     <string name="title_activity_activity_page">ActivityPage</string>

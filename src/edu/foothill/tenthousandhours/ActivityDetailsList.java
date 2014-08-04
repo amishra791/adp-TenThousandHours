@@ -31,6 +31,7 @@ public class ActivityDetailsList extends ProjectActivity {
 		//activityName = Integer.valueOf(pos).toString();
 		ActionBar ab = getActionBar();
 		ab.setTitle("Activity Details: " + activityName);
+		ab.setSubtitle(R.string.app_name);
 		
 		ListView listView = (ListView) findViewById(R.id.activityDetialsListView);
 		try {

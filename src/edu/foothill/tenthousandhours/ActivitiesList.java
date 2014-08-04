@@ -18,6 +18,7 @@ public class ActivitiesList extends ProjectActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_activities_list);
 		
+		getActionBar().setSubtitle(R.string.app_name);
 		
 		ListView listView = (ListView) findViewById(R.id.activitiesListView);
 		listView.setAdapter(new ActivitiesListAdapter(this));

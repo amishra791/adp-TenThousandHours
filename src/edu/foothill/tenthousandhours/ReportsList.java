@@ -45,6 +45,7 @@ public class ReportsList extends Activity {
 		
 		ActionBar ab = getActionBar();
 		ab.setTitle("Reports (" + mode+")");
+		ab.setSubtitle(R.string.app_name);
 		
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		

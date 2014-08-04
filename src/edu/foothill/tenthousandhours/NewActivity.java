@@ -21,6 +21,7 @@ public class NewActivity extends ProjectActivity {
 		
 		//add up action
 		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getActionBar().setSubtitle(R.string.app_name);
 		
 		editText = (EditText) findViewById(R.id.editText_name_newActivity);
 	}

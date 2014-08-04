@@ -2,20 +2,22 @@
     android:id="@+id/listItemView"
     android:layout_width="match_parent"
     android:orientation="horizontal" 
-    android:layout_height="20dp"
-    android:layout_margin="0dp"
-    android:layout_marginBottom="2dp"
+    android:layout_height="20sp"
+    android:layout_marginTop="0sp"
+    android:layout_marginBottom="0sp"
     android:padding="0dp"
-    android:background="#282828">
-    
+    android:background="#2b8787">    
         
    <TextView 
    		android:id="@+id/activityName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:textColor="#ffffff"
-       	android:text="hello"
-       	android:textSize="14sp"/>
+       	android:textSize="14sp"
+    	android:layout_marginTop="0sp"
+       	android:layout_marginBottom="1sp"
+       	android:background="#282828"/>
             
     
 </LinearLayout>

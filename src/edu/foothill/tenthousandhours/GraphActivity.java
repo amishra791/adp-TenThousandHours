@@ -43,6 +43,7 @@ public class GraphActivity extends Activity {
 		
 		ActionBar ab = getActionBar();
 		ab.setTitle("Graphs (" + mode+")");
+		ab.setSubtitle(R.string.app_name);
 		
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		
