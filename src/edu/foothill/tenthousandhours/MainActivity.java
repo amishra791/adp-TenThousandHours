@@ -1,9 +1,17 @@
 package edu.foothill.tenthousandhours;
 
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Property;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
@@ -36,6 +44,60 @@ public class MainActivity extends Activity {
 //        setContentView(R.layout.activity_splash);
 		setContentView(R.layout.activity_main);
 		getActionBar().hide();
+		
+		// Animate the text
+		boolean animateText = false;
+		if (animateText) {
+//			Integer colorFrom = getResources().getColor(Color.BLACK);
+//			Integer colorTo = getResources().getColor(R.color.app_theme_color);
+			
+			/* 1st
+			final TextView textView = (TextView) findViewById(R.id.textView1);
+			textView.setTextColor(Color.WHITE);
+			*/
+	
+			/* 2nd
+			final ObjectAnimator animator = ObjectAnimator.ofInt(textView, "textColor", colorTo);
+			*/
+
+			/*
+			final Property<TextView, Integer> property = new Property<TextView, Integer>(int.class, "textColor") {
+			   @Override
+			    public Integer get(TextView object) {
+			        return object.getCurrentTextColor();
+			    }
+
+			   @Override
+			    public void set(TextView object, Integer value) {
+			        object.setTextColor(value);
+			    }
+			};
+
+			final ObjectAnimator animator = ObjectAnimator.ofInt(textView, property, colorTo);
+			*/
+			
+			/*
+			// 
+			animator.setDuration(1000L);
+			animator.setEvaluator(new ArgbEvaluator());
+			animator.setInterpolator(new DecelerateInterpolator(2));
+			animator.start();
+			*/
+			
+			/* 3rd
+			ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), Color.WHITE, R.color.app_theme_color);
+			colorAnimation.addUpdateListener(new AnimatorUpdateListener() {
+
+			    @Override
+			    public void onAnimationUpdate(ValueAnimator animator) {
+			        textView.setTextColor((Integer)animator.getAnimatedValue());
+			    }
+
+			});
+			colorAnimation.start();
+			*/
+		}
+		
         new Handler().postDelayed(new Runnable() {
  
             /*
