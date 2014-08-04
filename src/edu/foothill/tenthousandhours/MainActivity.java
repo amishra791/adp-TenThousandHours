@@ -1,16 +1,11 @@
 package edu.foothill.tenthousandhours;
 
-import android.animation.ArgbEvaluator;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Property;
-import android.view.animation.DecelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
@@ -36,7 +31,7 @@ public class MainActivity extends Activity {
         });
 	}
 	*/
-	
+	private Animation animFadein;	// Animation    
 	private long SPLASH_TIME_OUT = 3000;
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,56 +41,15 @@ public class MainActivity extends Activity {
 		getActionBar().hide();
 		
 		// Animate the text
-		boolean animateText = false;
+		boolean animateText = true;
 		if (animateText) {
-//			Integer colorFrom = getResources().getColor(Color.BLACK);
-//			Integer colorTo = getResources().getColor(R.color.app_theme_color);
-			
-			/* 1st
 			final TextView textView = (TextView) findViewById(R.id.textView1);
-			textView.setTextColor(Color.WHITE);
-			*/
-	
-			/* 2nd
-			final ObjectAnimator animator = ObjectAnimator.ofInt(textView, "textColor", colorTo);
-			*/
-
-			/*
-			final Property<TextView, Integer> property = new Property<TextView, Integer>(int.class, "textColor") {
-			   @Override
-			    public Integer get(TextView object) {
-			        return object.getCurrentTextColor();
-			    }
-
-			   @Override
-			    public void set(TextView object, Integer value) {
-			        object.setTextColor(value);
-			    }
-			};
-
-			final ObjectAnimator animator = ObjectAnimator.ofInt(textView, property, colorTo);
-			*/
 			
-			/*
-			// 
-			animator.setDuration(1000L);
-			animator.setEvaluator(new ArgbEvaluator());
-			animator.setInterpolator(new DecelerateInterpolator(2));
-			animator.start();
-			*/
-			
-			/* 3rd
-			ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), Color.WHITE, R.color.app_theme_color);
-			colorAnimation.addUpdateListener(new AnimatorUpdateListener() {
-
-			    @Override
-			    public void onAnimationUpdate(ValueAnimator animator) {
-			        textView.setTextColor((Integer)animator.getAnimatedValue());
-			    }
-
-			});
-			colorAnimation.start();
-			*/
+			// load the animation
+        	animFadein = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
+        	
+        	// start the animation
+			textView.startAnimation(animFadein);
 		}
 		
         new Handler().postDelayed(new Runnable() {

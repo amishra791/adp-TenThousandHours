@@ -5,10 +5,6 @@
     android:background="#000000"
     tools:context="${relativePackage}.${activityClass}" >
 
-    <!-- 
-    
-
-    --> 
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
