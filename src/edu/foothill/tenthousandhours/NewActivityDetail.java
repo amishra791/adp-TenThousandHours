@@ -47,7 +47,7 @@ public class NewActivityDetail extends ProjectActivity {
 		}
 		
 		ActionBar ab = getActionBar();
-		ab.setTitle("Log In Time: " + activityName);
+		ab.setTitle("Track Activity: " + activityName);
 		
 		timerValue = (TextView) findViewById(R.id.timerValue);
 		startButton = (ImageButton) findViewById(R.id.startButton);

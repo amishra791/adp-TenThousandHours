@@ -2,43 +2,46 @@
     android:id="@+id/listItemView"
     android:layout_width="match_parent"
     android:orientation="horizontal" 
-    android:layout_height="64dp"
-    android:layout_margin="0dp"
-    android:layout_marginBottom="2dp"
-    android:padding="0dp">
-    
-        
+    android:layout_height="40sp"
+    android:layout_marginTop="5sp"
+    android:layout_marginBottom="15sp"
+    android:padding="0dp"
+    android:background="#2b8787">
+   
    <TextView 
    		android:id="@+id/activityDetailDate"
        	android:text="@string/activity_field_date"
-       	android:layout_marginRight="5dp"
         android:layout_width="0dip"
         android:layout_weight="1"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:textColor="#ffffff"
-       	android:textSize="25dp"
+       	android:textSize="15sp"
+       	android:layout_marginLeft="2sp"
+       	android:gravity="center"
+       	android:layout_marginRight="2sp"
        	android:background="#282828"/>
+   
    <TextView 
    		android:id="@+id/activityDetailStartTime"
        	android:text="@string/activity_field_time"
-       	android:layout_marginRight="5dp"
         android:layout_width="0dip"
         android:layout_weight="1"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:textColor="#ffffff"
-       	android:textSize="25dp"
+       	android:textSize="15sp"
+       	android:gravity="center"
+       	android:layout_marginRight="2sp"
        	android:background="#282828"/>
    <TextView 
    		android:id="@+id/activityDetailDuration"
        	android:text="@string/activity_field_duration"
         android:layout_width="0dip"
         android:layout_weight="1"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:textColor="#ffffff"
-       	android:textSize="25dp"
-       	android:background="#282828"/>
-   
-   
-            
+       	android:textSize="15sp"
+       	android:gravity="center"
+       	android:layout_marginRight="2sp"
+       	android:background="#282828"/>           
     
 </LinearLayout>
