@@ -57,6 +57,10 @@ public class ReportsViewAdapter extends ProjectBaseAdapter{
 		return reports.get(position).getName();
 	}
 	
+	public long getReportActivityLongTime(int position){
+		return reports.get(position).getDuration();
+	}
+	
 	public String getReportActivityTime(int position){
 		Report r = reports.get(position);
 		String time = r.getTotalTimeFormat();

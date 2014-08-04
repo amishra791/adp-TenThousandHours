@@ -17,18 +17,22 @@
     <string name="title_activity_activity_details_list">Activity Details List</string>
     <string name="title_activity_new_activity_detail">New Activity Detail</string>
     <string name="title_activity_reports_list">Reports</string>
-    
+
     <!-- activity field related -->
     <string name="activity_field_date">Date</string>
     <string name="activity_field_time">Time</string>
     <string name="activity_field_duration">Duration</string>
-    
+
     <!-- String values for reports activity -->
     <string name="reports_daily">Daily</string>
-   	<string name="reports_weekly">Weekly</string>
+    <string name="reports_weekly">Weekly</string>
     <string name="reports_monthly">Monthly</string>
-    
+
     <!-- String values for New Activity -->
     <string name="activity_name">Name of Activity</string>
+
+    <!-- String values for Reports View -->
+    <string name="view_Graphs">View Graphs</string>
+    <string name="title_activity_graph">GraphActivity</string>
 
 </resources>

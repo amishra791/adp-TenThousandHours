@@ -15,6 +15,14 @@ import android.widget.ListView;
 
 public class ReportsList extends Activity {
 
+	private String mode= "";
+	private long[] activityTimeData;
+	private String[] activityNameData;
+	
+	
+	private ReportsListAdapter adapter;
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -22,13 +30,14 @@ public class ReportsList extends Activity {
 		ListView listView = (ListView) findViewById(R.id.reportsListView);
 		Intent in = getIntent();
 		Bundle b = in.getExtras();
-		String mode = "daily";
+		mode = "daily";
 		if(b!=null){
 			mode = (String) b.getString("mode");
 		}
 		
 		try {
-			listView.setAdapter(new ReportsListAdapter(this, mode));
+			adapter = new ReportsListAdapter(this, mode);
+			listView.setAdapter(adapter);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -75,23 +84,15 @@ public class ReportsList extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	/*
-	public void daily(View view){
-		
+	public void graphButtonHandler(View view){
+		Intent intent = new Intent(this,GraphActivity.class);
+		activityTimeData = adapter.getActivityTimeData();
+		activityNameData = adapter.getActivityNameData();
+		intent.putExtra("mode", mode);
+		intent.putExtra("activityNameData", activityNameData);
+		intent.putExtra("activityTimeData", activityTimeData);
+		startActivity(intent);
+		this.finish();
 	}
-	public void weekly(View view){
-		setContentView(R.layout.activity_reports_list);
-		ListView listView = (ListView) findViewById(R.id.reportsListView);
-		try {
-			listView.setAdapter(new ReportsListAdapter(this, "weekly"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	public void monthly(View view){
-	
-	}
-	*/
 }
 
