@@ -19,12 +19,60 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
-    <ListView
-	    android:id="@+id/reportsListView"
+    <LinearLayout 
 	    android:layout_width="match_parent"
 	    android:layout_height="0dp"
-	    android:layout_weight="10"
-	    tools:context="${relativePackage}.${activityClass}">
+    	android:layout_marginBottom="2sp"
+	    android:layout_weight="1"
+	    android:orientation="horizontal" 
+	    android:background="#2b8787">
+	    
+	   <TextView
+	       android:id="@+id/activity_text"
+	       android:layout_width="0dip"
+	       android:layout_height="match_parent"
+	       android:layout_marginLeft="1sp"
+	       android:layout_marginRight="2sp"
+	       android:layout_weight="4"
+	       android:background="#282828"
+       	   android:gravity="center"
+	       android:text="Activity"
+	       android:textColor="#2b8787"
+	       android:textSize="15sp" />
+	   
+	   <TextView
+	       android:id="@+id/totalTime_text"
+	       android:layout_width="0dip"
+	       android:layout_height="match_parent"
+	       android:layout_marginRight="2sp"
+	       android:layout_weight="2"
+	       android:background="#282828"
+	       android:gravity="center"
+	       android:text="Total Hours"
+	       android:textColor="#2b8787"
+	       android:textSize="15sp" />
+	   
+	   <TextView
+	       android:id="@+id/percentage"
+	       android:layout_width="0dip"
+	       android:layout_height="match_parent"
+	       android:layout_marginRight="1sp"
+	       android:layout_weight="1"
+	       android:background="#282828"
+	       android:gravity="center"
+	       android:text="% of Total Time"
+	       android:textColor="#2b8787"
+	       android:textSize="15sp" />
+	    
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/reportsListView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8.90"
+        tools:context="${relativePackage}.${activityClass}" >
+
 	</ListView>
 	
     <Button 

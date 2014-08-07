@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 import android.annotation.SuppressLint;
 
-public class Report {
+public class Report implements Comparable<Report> {
 	private Integer id;
 	private String activityName;
 	private long totalTime;
@@ -28,6 +28,10 @@ public class Report {
 	public long getDuration(){
 		return totalTime;
 	}
+
+	public int compareTo(Report rhs) {
+        return activityName.compareTo(activityName);
+    }
 	
 	
 	@SuppressLint("SimpleDateFormat")

@@ -54,21 +54,6 @@ public class GraphActivity extends Activity {
 		for (int i=0;i<activityTimeData.length;i++){
 			series.add(activityNameData[i],activityTimeData[i]);
 		}
-		/*
-		int[] colors = new int[] { Color.BLUE, Color.GREEN, Color.MAGENTA,
-									Color.YELLOW, Color.CYAN};
-		
-		
-		DefaultRenderer renderer = new DefaultRenderer();
-		for (int i = 0, colorCount = 0; i < series.getItemCount(); i++,colorCount++) {
-			SimpleSeriesRenderer r = new SimpleSeriesRenderer();
-			r.setColor(colors[i]);
-			renderer.addSeriesRenderer(r);
-			if(colorCount==4){
-				colorCount = -1;
-			}
-		}
-		*/
 		
 		int[] colors = generateColorArray(activityTimeData.length);
 		DefaultRenderer renderer = new DefaultRenderer();
@@ -140,7 +125,7 @@ public class GraphActivity extends Activity {
 					Math.abs(sgreen-fgreen) * Math.abs(sgreen-fgreen) +
 					Math.abs(sblue-fblue) * Math.abs(sblue-fblue);
 			double diff = Math.sqrt(d);
-			if(diff < 100){
+			if(diff < 50){
 				isValid = false;
 				return isValid;
 			}

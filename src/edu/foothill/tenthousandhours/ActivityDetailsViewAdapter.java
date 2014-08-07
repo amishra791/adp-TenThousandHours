@@ -2,6 +2,7 @@ package edu.foothill.tenthousandhours;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.StringTokenizer;
 
 import android.content.Context;
@@ -65,6 +66,9 @@ public class ActivityDetailsViewAdapter extends ProjectBaseAdapter{
 			st = new StringTokenizer(s);
 			activityDetails.add(new ActivityDetail(idCount++,Long.parseLong(st.nextToken()),Long.parseLong(st.nextToken())));
 		}
+		
+		// Sort it to latest to old
+		Collections.sort(activityDetails);
 		
 	}
 

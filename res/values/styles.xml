@@ -17,19 +17,5 @@
 	    <!-- All customizations that are NOT specific to a particular API-level can go here. -->
 	      <item name="android:windowBackground">@color/background_color</item>
 	  </style>
-	  
-	<!-- 
-	  <style name="MyTheme" parent="AppTheme">
-	     <item name="android:actionBarStyle">@style/MyTheme.ActionBarStyle</item>
-	  </style>
-	
-    <style name="MyTheme.ActionBarStyle" parent="@android:style/Widget.Holo.Light.ActionBar">
-        <item name="android:subtitleTextStyle">@style/MyTheme.ActionBar.TitleTextStyle</item>
-    </style>
-
-    <style name="MyTheme.ActionBar.TitleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
-        <item name="android:textColor">@color/app_theme_color</item>
-    </style>
-    -->
 
 </resources>

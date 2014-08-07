@@ -1,6 +1,7 @@
 package edu.foothill.tenthousandhours;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import android.content.Context;
@@ -41,6 +42,9 @@ public class ActivitiesViewAdapter extends ProjectBaseAdapter {
 		for(String s: activitiesInDir){
 			activities.add(new Activity(idCount++, s));
 		}
+		
+		// Sort it alphabetically
+		//Collections.sort(activities);
 	}
 
 	@Override

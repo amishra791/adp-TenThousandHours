@@ -2,6 +2,7 @@ package edu.foothill.tenthousandhours;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import android.content.Context;
@@ -26,6 +27,9 @@ public class ReportsViewAdapter extends ProjectBaseAdapter{
 		for(String filePath: activityFilePath){
 			activityNames.add(activityUtil.getActivityNamefromFilePath(filePath));
 		}
+		
+		// Sort it
+		Collections.sort(reports);
 		
 		int idCount = 0;
 		for(String activityName:activityNames){

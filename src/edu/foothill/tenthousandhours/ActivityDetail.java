@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 import java.util.concurrent.TimeUnit;
 
 
-public class ActivityDetail {
+public class ActivityDetail implements Comparable<ActivityDetail> {
 	private Integer id;
 	private long startTime;
 	private long endTime;
@@ -29,7 +29,19 @@ public class ActivityDetail {
 		return id;
 	}
 
-	
+	public int compareTo(ActivityDetail rhs) {
+        long t = ( startTime - rhs.getStartTime() );
+        
+        if ( startTime > t) {
+        	// Put latest to recent
+        	return -1;
+        } else if ( startTime < t) {
+        	// oldest to later
+        	return 1;
+        } else  {
+        	return 0;
+        }
+    }
 
 	public long getStartTime() {
 		return startTime;

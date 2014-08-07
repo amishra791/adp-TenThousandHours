@@ -1,6 +1,6 @@
 package edu.foothill.tenthousandhours;
 
-public class Activity {
+public class Activity implements Comparable<Activity> {
 
 	private Integer id;
 	private String name;
@@ -17,5 +17,9 @@ public class Activity {
 	public String getName(){
 		return this.name;
 	}
+	
+	public int compareTo(Activity rhs) {
+        return name.compareTo(rhs.name);
+    }
 
 }
