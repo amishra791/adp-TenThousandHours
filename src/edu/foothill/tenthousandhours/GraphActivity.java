@@ -19,7 +19,7 @@ import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 
-public class GraphActivity extends Activity {
+public class GraphActivity extends ProjectActivity {
 
 	private GraphicalView pieChartView;
 	private String mode = "";

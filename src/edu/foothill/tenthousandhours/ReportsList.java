@@ -13,7 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 
-public class ReportsList extends Activity {
+public class ReportsList extends ProjectActivity {
 
 	private String mode= "";
 	private long[] activityTimeData;

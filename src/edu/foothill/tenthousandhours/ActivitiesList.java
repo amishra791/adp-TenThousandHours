@@ -20,6 +20,7 @@ public class ActivitiesList extends ProjectActivity {
 		
 		getActionBar().setSubtitle(R.string.app_name);
 		
+		
 		ListView listView = (ListView) findViewById(R.id.activitiesListView);
 		listView.setAdapter(new ActivitiesListAdapter(this));
 		
